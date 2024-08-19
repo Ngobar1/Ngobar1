@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - "**"
+      - '**'
   pull_request:
     branches:
       - main
@@ -46,8 +46,8 @@ jobs:
             style
             test
           requireScope: false
-          subjectPattern: "^[A-Z].*$"
-          subjectPatternError: "The subject of the PR title must start with a capital letter."
+          subjectPattern: '^[A-Z].*$'
+          subjectPatternError: 'The subject of the PR title must start with a capital letter.'
         continue-on-error: true
 
   build:
@@ -64,9 +64,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
+          cache: 'npm'
       - name: Install dependencies
         run: npm ci
+      - name: Run Lint
+        run: npm run lint
       - name: Run tests and coverage
         run: npm test --if-present
       - name: SonarCloud Scan
