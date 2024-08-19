@@ -68,7 +68,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run tests and coverage
-        run: npm test
+        run: npm test --if-present
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
